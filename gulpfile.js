@@ -21,11 +21,13 @@ var config = {
     css: ['node_modules/bootstrap/dist/css/bootstrap.min.css',
           'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
          ],
+    images: './src/images/*',
     mainJs: './src/main.js'
   },
   dist: {
     root: './dist',
     indexHtml: './dist/index.html',
+    images: './dist/images',
     scripts: './dist/scripts',
     css: './dist/css'
   }
@@ -59,7 +61,13 @@ gulp.task('copy-html', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('assemble', ['lint-js', 'bundle-js', 'bundle-css', 'copy-html']);
+gulp.task('copy-images', function() {
+  gulp.src(config.sourceset.images)
+    .pipe(gulp.dest(config.dist.images))
+    .pipe(connect.reload());
+});
+
+gulp.task('assemble', ['lint-js', 'bundle-js', 'bundle-css', 'copy-images', 'copy-html']);
 
 gulp.task('launch-connect-server', function() {
   connect.server({
