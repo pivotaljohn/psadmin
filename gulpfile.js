@@ -17,9 +17,10 @@ var config = {
   },
   sourceset: {
     html: './src/*.html',
-    js: './src/**/*.js',
+    js: ['./src/*.js', './src/**/*.js'],
     css: ['node_modules/bootstrap/dist/css/bootstrap.min.css',
-          'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+          'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+          'node_modules/toastr/toastr.css'
          ],
     images: './src/images/*',
     mainJs: './src/main.js'
